@@ -484,8 +484,47 @@ router.patch("/forget/newPassword/:forgetKey", (req, res) => {
 
 router.get("/oauth/:email", (req,res) => {
   const email = req.params.email
-  User.findOne({email: email}).then(result => {
-    return res.status(200).json(result);
+  User.find({email: email}).then(user => {
+    if(user.length === 1){
+      const token = jwt.sign(
+        {
+          email: user[0].email,
+          userId: user[0]._id,
+          authType: user[0].authType,
+          fName: user[0].fName,
+          lName: user[0].lName,
+          verified: user[0].verified,
+          composeHandle: user[0].composeHandle,
+          canApprove: user[0].canApprove,
+        },
+        process.env.JWT_TOKEN,
+        {
+          expiresIn: "12h",
+        }
+      );
+      return res.status(200).json({
+        token: token,
+       
+        email: user[0].email,
+          userId: user[0]._id,
+          authType: user[0].authType,
+          fName: user[0].fName,
+          lName: user[0].lName,
+          verified: user[0].verified,
+          composeHandle: user[0].composeHandle,
+          canApprove: user[0].canApprove,
+       message:"registered"
+      
+  
+       
+       
+      });
+    }else{
+      return res.status(200).json({
+        message: "Not registered"
+      })
+    }
+   
   }).catch()
 })
 ////////////////////////////////////////////////////////
