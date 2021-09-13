@@ -514,9 +514,6 @@ router.get("/oauth/:email", (req,res) => {
           composeHandle: user[0].composeHandle,
           canApprove: user[0].canApprove,
        message:"registered"
-      
-  
-       
        
       });
     }else{
