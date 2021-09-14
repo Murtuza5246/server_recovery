@@ -9,14 +9,12 @@ router.post("/new/article", (req, res) => {
   const {
     name,
     email,
-
     time,
     date,
     title,
     description,
     article,
     imageUrl,
-
     userId,
     privacy,
   } = req.body;
@@ -25,14 +23,12 @@ router.post("/new/article", (req, res) => {
     _id: new mongoose.Types.ObjectId(),
     name,
     email,
-
     time,
     date,
     title,
     description,
     article,
     imageUrl,
-
     profileImage: `https://my-server-problemspotter.herokuapp.com/image/profile/${userId}`,
     userId,
     privacy,
@@ -50,6 +46,7 @@ router.post("/new/article", (req, res) => {
       });
     });
 });
+////this is the line for just to show some changes made in git repo
 
 router.get("/article/:id", (req, res) => {
   Blog.findOne({ _id: ObjectId(req.params.id) })
