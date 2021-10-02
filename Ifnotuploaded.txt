@@ -1,0 +1,1 @@
+delete package.lock.json and then push the file it will be deployed very easily ok :)

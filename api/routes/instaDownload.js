@@ -7,8 +7,8 @@ const instagram_download = require('@juliendu11/instagram-downloader');
 const cheerio = require('cheerio');
 const axios = require('axios');
 
-router.get('/', async (req, res) => {
-	const url = req.query.link;
+router.post('/', async (req, res) => {
+	const url = req.body.link;
 
 	const html = await axios.get(url);
 	const $ = cheerio.load(html.data);
