@@ -24,6 +24,12 @@ router.get('/', async (req, res) => {
 });
 router.get('/fb/', (req, res) => {
 	const url = req.query.link;
+	//dfrfierivberv
+	//vrevuervubwirevbkebrvbre
+	//vrevuervubwirevbkebrvbre
+	//vrevuervubwirevbkebrvbre
+	//vrevuervubwirevbkebrvbre
+	//vrevuervubwirevbkebrvbre
 	require('fb-video-downloader').getInfo(url).then((info) => res.status(200).json(JSON.stringify(info, null, 2)));
 });
 
