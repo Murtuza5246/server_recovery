@@ -7,8 +7,8 @@ const instagram_download = require('@juliendu11/instagram-downloader');
 const cheerio = require('cheerio');
 const axios = require('axios');
 
-router.post('/', async (req, res) => {
-	const url = req.body.link;
+router.get('/', async (req, res) => {
+	const url = req.query.link;
 
 	const html = await axios.get(url);
 	const $ = cheerio.load(html.data);
@@ -20,6 +20,11 @@ router.post('/', async (req, res) => {
 	};
 	console.log(linkObject);
 	return res.status(200).json(linkObject);
+	// return res.status(200).json({ $ });
+});
+router.get('/fb/', (req, res) => {
+	const url = req.query.link;
+	require('fb-video-downloader').getInfo(url).then((info) => res.status(200).json(JSON.stringify(info, null, 2)));
 });
 
 module.exports = router;

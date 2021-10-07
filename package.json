@@ -25,6 +25,7 @@
     "draftjs-to-html": "^0.9.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.7-alpha.3",
+    "fb-video-downloader": "^1.0.3",
     "gridfs-stream": "^1.1.1",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
