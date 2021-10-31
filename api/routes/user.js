@@ -920,7 +920,7 @@ router.post('/login', (req, res, next) => {
 					blockedTime = 0;
 				}
 
-				if (current_time - blockedTime >= 10000 && user[0].ban.action) {
+				if (current_time - blockedTime >= 600000 && user[0].ban.action) {
 					User.updateOne(
 						{ _id: user[0]._id },
 						{
@@ -1065,7 +1065,7 @@ router.post('/login', (req, res, next) => {
 					User.updateOne(
 						{ _id: user[0]._id },
 						{
-							ban       : { action: true, reason: 'Too many incorrect attempts' },
+							ban       : { action: true, reason: 'Too many incorrect attempts, try after 10 minute' },
 							blockTime : new Date().getTime()
 						}
 					)
